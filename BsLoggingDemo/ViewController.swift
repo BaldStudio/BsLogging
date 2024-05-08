@@ -10,16 +10,16 @@ import UIKit
 import BsLogging
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         LoggingSystem.bootstrap { label in
-            #if DEBUG
+#if DEBUG
             StreamLogHandler.standardOutput(label: label)
-            #else
+#else
             UnusableLogHandler()
-            #endif
+#endif
         }
         NSLog("NSLog Hello, world!")
         print("print Hello, world!")
@@ -29,6 +29,6 @@ class ViewController: UIViewController {
         logger.warn("w Hello, world!")
         logger.error("e Hello, world!")
     }
-
+    
 }
 

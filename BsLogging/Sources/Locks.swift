@@ -48,33 +48,33 @@ extension Lock {
 // MARK: - Read Write Lock
 
 final class ReadWriteLock {
-    private let mutex: UnsafeMutablePointer<pthread_rwlock_t> = UnsafeMutablePointer.allocate(capacity: 1)
+    private let rwlock: UnsafeMutablePointer<pthread_rwlock_t> = UnsafeMutablePointer.allocate(capacity: 1)
     
     init() {
-        let err = pthread_rwlock_init(mutex, nil)
+        let err = pthread_rwlock_init(rwlock, nil)
         precondition(err == 0, "\(#function) failed in pthread_rwlock with error \(err)")
     }
     
     deinit {
-        let err = pthread_rwlock_destroy(mutex)
+        let err = pthread_rwlock_destroy(rwlock)
         precondition(err == 0, "\(#function) failed in pthread_rwlock with error \(err)")
-        mutex.deallocate()
+        rwlock.deallocate()
     }
 }
 
 extension ReadWriteLock {
     func lockRead() {
-        let err = pthread_rwlock_rdlock(mutex)
+        let err = pthread_rwlock_rdlock(rwlock)
         precondition(err == 0, "\(#function) failed in pthread_rwlock with error \(err)")
     }
     
     func lockWrite() {
-        let err = pthread_rwlock_wrlock(mutex)
+        let err = pthread_rwlock_wrlock(rwlock)
         precondition(err == 0, "\(#function) failed in pthread_rwlock with error \(err)")
     }
     
     func unlock() {
-        let err = pthread_rwlock_unlock(mutex)
+        let err = pthread_rwlock_unlock(rwlock)
         precondition(err == 0, "\(#function) failed in pthread_rwlock with error \(err)")
     }
     

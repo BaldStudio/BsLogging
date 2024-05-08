@@ -32,8 +32,8 @@ public enum LoggingSystem {
             factory(label)
         }
     }
-
-    public static func bootstrap(metadataProvider: Logger.MetadataProvider?, 
+    
+    public static func bootstrap(metadataProvider: Logger.MetadataProvider?,
                                  _ factory: @escaping (String, Logger.MetadataProvider?) -> LogHandler) {
         bootstrap(validate: true, metadataProvider: metadataProvider, factory)
     }
@@ -51,6 +51,7 @@ extension LoggingSystem {
     static func createLogHandler(_ label: String, _ provider: Logger.MetadataProvider?) -> LogHandler {
         logHandlerFactory.make(label, metadataProvider)
     }
+    
 #if DEBUG
     static func warnOnceLogHandlerNotSupportedMetadataProvider<Handler: LogHandler>(_ type: Handler.Type) -> Bool {
         warnOnceBox.warnOnceLogHandlerNotSupportedMetadataProvider(type: type)
@@ -65,12 +66,12 @@ extension LoggingSystem {
         private let lock = ReadWriteLock()
         private var initialized = false
         private var underlying: (String, Logger.MetadataProvider?) -> LogHandler
-
+        
         init(_ underlying: @escaping (String, Logger.MetadataProvider?) -> LogHandler) {
             self.underlying = underlying
         }
         
-        func changeUnderlying(validate: Bool = false, 
+        func changeUnderlying(validate: Bool = false,
                               _ underlying: @escaping (String, Logger.MetadataProvider?) -> LogHandler) {
             lock.withWriteLock {
                 precondition(!validate || !self.initialized, "logging system can only be initialized once per process.")
@@ -115,7 +116,7 @@ extension LoggingSystem {
     final class WarnOnceBox {
         private let lock: Lock = Lock()
         private var warnOnceLogHandlerNotSupportedMetadataProviderPerType: [ObjectIdentifier: Bool] = [:]
-
+        
         func warnOnceLogHandlerNotSupportedMetadataProvider<Handler: LogHandler>(type: Handler.Type) -> Bool {
             lock.withLock {
                 let id = ObjectIdentifier(type)
@@ -127,5 +128,5 @@ extension LoggingSystem {
             }
         }
     }
-    #endif
+#endif
 }
