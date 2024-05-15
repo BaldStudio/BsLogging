@@ -76,7 +76,7 @@
 		D27A8A982520AEAC006A6125 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		D297DB782568F6390096BD54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F3DFA0269FD3D8006DB903 /* BsLoggingDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BsLoggingDemo.entitlements; sourceTree = "<group>"; };
-		D2FCEA6A25F9F779005EAA15 /* BsLogging.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = BsLogging.podspec; sourceTree = SOURCE_ROOT; };
+		D2FCEA6A25F9F779005EAA15 /* BsLogging.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = BsLogging.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D675373F9408A6B86F6FD006 /* Pods_BsLoggingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BsLoggingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D836B9E34C0774625A10E925 /* Pods-BsLogging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BsLogging.release.xcconfig"; path = "Target Support Files/Pods-BsLogging/Pods-BsLogging.release.xcconfig"; sourceTree = "<group>"; };
 		DF050B38525F3DBB15AC53B7 /* Pods-BsLoggingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BsLoggingTests.debug.xcconfig"; path = "Target Support Files/Pods-BsLoggingTests/Pods-BsLoggingTests.debug.xcconfig"; sourceTree = "<group>"; };
